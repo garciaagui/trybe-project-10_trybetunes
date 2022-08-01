@@ -11,7 +11,7 @@ import NotFound from './pages/NotFound';
 class App extends React.Component {
   render() {
     return (
-      <dvi>
+      <div>
         <h1> TrybeTunes </h1>
         <Switch>
           <Route
@@ -49,8 +49,7 @@ class App extends React.Component {
             component={ NotFound }
           />
         </Switch>
-      </dvi>
-
+      </div>
     );
   }
 }
