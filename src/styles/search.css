@@ -1,4 +1,4 @@
-.form-login {
+.form-search {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -7,30 +7,30 @@
   width: 70%;
 }
 
-.form-login h2 {
+.form-search h2 {
   font-size: 2em;
 }
 
-.form-login input {
+.form-search input {
   font-size: 18px;
   height: 40px;
   margin-bottom: 50px;
   width: 400px;
 }
 
-.form-login span {
+.form-search span {
   color: rgb(146, 146, 146);
   position: fixed;
-  top: 140px;
+  top: 300px;
 }
 
-.form-login button {
+.form-search button {
   background-color: rgb(64, 223, 100);
   cursor: pointer;
   height: 30px;
   width: 200px;
 }
 
-.form-login button:disabled {
+.form-search button:disabled {
   background-color: rgb(240, 240, 240);
 }

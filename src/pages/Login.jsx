@@ -17,7 +17,7 @@ class Login extends Component {
     };
   }
 
-  handleChange = ({ target }) => {
+  handleLoginNameChange = ({ target }) => {
     const minLimit = 3;
     this.setState({
       username: target.value,
@@ -38,11 +38,11 @@ class Login extends Component {
 
   render() {
     const { username, isLoginBtnDisabled, loading } = this.state;
-    const minLimit = 3;
     return (
       <div data-testid="page-login">
+
         {loading ? <Loading /> : (
-          <form>
+          <form className="form-login">
             <h2>Login</h2>
             <label htmlFor="username">
               <input
@@ -50,13 +50,13 @@ class Login extends Component {
                 name="username"
                 id="username"
                 value={ username }
-                onChange={ this.handleChange }
+                onChange={ this.handleLoginNameChange }
                 placeholder="Insira o seu nome"
                 data-testid="login-name-input"
               />
             </label>
 
-            {(username.length < minLimit)
+            {isLoginBtnDisabled
               ? (<span>O nome precisa ter no mínimo 3 caracteres</span>)
               : ''}
 
