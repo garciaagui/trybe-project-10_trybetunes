@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
