@@ -34,3 +34,19 @@
 .form-search button:disabled {
   background-color: rgb(240, 240, 240);
 }
+
+.all-albums {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+
+.individual-album {
+  list-style-type: none;
+  width: 40%;
+  height: 100px;
+}
