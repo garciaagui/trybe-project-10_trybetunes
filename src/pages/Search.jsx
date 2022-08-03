@@ -35,6 +35,7 @@ class Search extends Component {
         const infoRetrieved = await searchAlbumsAPI(artistName);
         this.setState({
           artistName: '',
+          isSearchBtnDisabled: true,
           loading: false,
           albums: infoRetrieved,
         });
@@ -68,11 +69,10 @@ class Search extends Component {
                   placeholder="Insira o nome de uma banda ou artista"
                   data-testid="search-artist-input"
                 />
+                {isSearchBtnDisabled
+                  ? (<span>O nome precisa ter no mínimo 2 caracteres</span>)
+                  : ''}
               </label>
-
-              {isSearchBtnDisabled
-                ? (<span>O nome precisa ter no mínimo 2 caracteres</span>)
-                : ''}
 
               <button
                 type="button"
@@ -92,13 +92,13 @@ class Search extends Component {
                 <ul className="all-albums">
                   {albums.map((e) => (
                     <li className="individual-album" key={ e.collectionId }>
-                      <img src={ e.artworkUrl100 } alt={ e.collectionName } />
-                      <span>{e.collectionName}</span>
                       <Link
+                        className="link"
                         data-testid={ `link-to-album-${e.collectionId}` }
                         to={ `/album/${e.collectionId}` }
                       >
-                        Detalhes
+                        <img src={ e.artworkUrl100 } alt={ e.collectionName } />
+                        <span>{e.collectionName}</span>
                       </Link>
                     </li>
                   ))}

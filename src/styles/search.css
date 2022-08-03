@@ -11,6 +11,12 @@
   font-size: 2em;
 }
 
+.form-search label {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .form-search input {
   font-size: 18px;
   height: 40px;
@@ -20,8 +26,9 @@
 
 .form-search span {
   color: rgb(146, 146, 146);
-  position: fixed;
-  top: 300px;
+  position: relative;
+  right: 0;
+  top: -40px;
 }
 
 .form-search button {
@@ -36,17 +43,39 @@
 }
 
 .all-albums {
-  background-color: red;
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  width: 100%;
+  flex-flow: row wrap;
   height: auto;
+  justify-content: space-around;
   padding: 0;
+  width: 100%;
 }
 
 .individual-album {
+  border: 1px solid rgb(179, 179, 179);
+  height: 200px;
   list-style-type: none;
-  width: 40%;
-  height: 100px;
+  margin-bottom: 50px;
+  width: 300px;
+}
+
+.link {
+  align-items: center;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  font-weight: 800;
+  height: auto;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+}
+
+.link img {
+  width: 150px;
+}
+
+.link span {
+  margin-top: 10px;
 }
