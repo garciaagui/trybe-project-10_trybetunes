@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, removeSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends Component {
   constructor() {
@@ -11,17 +11,14 @@ class MusicCard extends Component {
   async handleCheckboxChange({ target }) {
     const { musicList, handleLoadingScreen, trackId, handleFavoriteSongs } = this.props;
     const targetMusic = musicList.find((music) => music.trackId === trackId);
+    handleLoadingScreen(true);
     if (target.checked) {
-      handleLoadingScreen(true);
       await addSong(targetMusic);
-      handleFavoriteSongs(targetMusic);
-      handleLoadingScreen(false);
+    } else {
+      await removeSong(targetMusic);
     }
-    // else {
-    //   handleLoadingScreen(true);
-    //   await removeSong(targetMusic);
-    //   handleLoadingScreen(false);
-    // }
+    handleFavoriteSongs(targetMusic);
+    handleLoadingScreen(false);
   }
 
   render() {
