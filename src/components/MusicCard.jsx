@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { addSong, removeSong } from '../services/favoriteSongsAPI';
+import { addSong } from '../services/favoriteSongsAPI';
 
 class MusicCard extends Component {
   constructor() {
@@ -8,24 +8,29 @@ class MusicCard extends Component {
     this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
-  async handleCheckboxChange(bool, id) {
-    const { musicList, handleLoadingScreen } = this.props;
-    const targetMusic = musicList.find((music) => music.trackId === id);
-    if (!bool) {
+  async handleCheckboxChange({ target }) {
+    const { musicList, handleLoadingScreen, trackId, handleFavoriteSongs } = this.props;
+    const targetMusic = musicList.find((music) => music.trackId === trackId);
+    if (target.checked) {
       handleLoadingScreen(true);
       await addSong(targetMusic);
-      handleLoadingScreen(false);
-    } else {
-      handleLoadingScreen(true);
-      await removeSong(targetMusic);
+      handleFavoriteSongs(targetMusic);
       handleLoadingScreen(false);
     }
+    // else {
+    //   handleLoadingScreen(true);
+    //   await removeSong(targetMusic);
+    //   handleLoadingScreen(false);
+    // }
   }
 
   render() {
-    const { trackId, trackName, previewUrl } = this.props;
-    const storagedFavorites = JSON.parse(localStorage.getItem('favorite_songs'));
-    const isFavorited = storagedFavorites.some((music) => music.trackId === trackId);
+    const { trackId,
+      trackName,
+      previewUrl,
+      favoriteSongs } = this.props;
+
+    const isFavorited = favoriteSongs.some((music) => music.trackId === trackId);
 
     return (
       <li>
@@ -45,7 +50,7 @@ class MusicCard extends Component {
             name="favoriteTrack"
             id="favoriteTrack"
             checked={ isFavorited }
-            onChange={ () => { this.handleCheckboxChange(isFavorited, trackId); } }
+            onChange={ this.handleCheckboxChange }
             data-testid={ `checkbox-music-${trackId}` }
           />
         </label>
@@ -63,6 +68,11 @@ MusicCard.propTypes = {
   trackName: PropTypes.string.isRequired,
   previewUrl: PropTypes.string.isRequired,
   handleLoadingScreen: PropTypes.func.isRequired,
+  handleFavoriteSongs: PropTypes.func.isRequired,
+  favoriteSongs: PropTypes.arrayOf(
+    PropTypes.shape({
+    }),
+  ).isRequired,
 };
 
 export default MusicCard;

@@ -4,12 +4,14 @@ import Header from '../components/Header';
 import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
+import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Album extends Component {
   constructor() {
     super();
 
     this.handleGetMusics = this.handleGetMusics.bind(this);
+    this.handleGetFavoriteSongs = this.handleGetFavoriteSongs.bind(this);
 
     this.state = {
       loading: false,
@@ -17,11 +19,13 @@ class Album extends Component {
       artistName: '',
       albumName: '',
       coverImage: '',
+      favoriteSongs: [],
     };
   }
 
   componentDidMount() {
     this.handleGetMusics();
+    this.handleGetFavoriteSongs();
   }
 
   async handleGetMusics() {
@@ -32,13 +36,32 @@ class Album extends Component {
         // const albumInfo = infoRetrieved.shift();
         const [, albumInfo] = infoRetrieved;
         this.setState({
-          loading: false,
           musicList: infoRetrieved,
           artistName: albumInfo.artistName,
           albumName: albumInfo.collectionName,
           coverImage: albumInfo.artworkUrl100,
+          loading: false,
         });
       });
+  }
+
+  async handleGetFavoriteSongs() {
+    this.setState({ loading: true }, async () => {
+      const storagedFavorites = await getFavoriteSongs();
+      this.setState({
+        favoriteSongs: storagedFavorites,
+        loading: false,
+      });
+    });
+  }
+
+  handleFavoriteSongs = (song) => {
+    this.setState({ loading: true });
+    this.setState((prevState) => ({
+      favoriteSongs: [...prevState.favoriteSongs, song],
+    }), () => ({
+      loading: false,
+    }));
   }
 
   handleLoadingScreen = (bool) => {
@@ -46,7 +69,13 @@ class Album extends Component {
   }
 
   render() {
-    const { loading, musicList, artistName, albumName, coverImage } = this.state;
+    const { loading,
+      musicList,
+      artistName,
+      albumName,
+      coverImage,
+      favoriteSongs } = this.state;
+
     return (
       <div data-testid="page-album">
 
@@ -74,6 +103,8 @@ class Album extends Component {
                   trackName={ music.trackName }
                   previewUrl={ music.previewUrl }
                   handleLoadingScreen={ this.handleLoadingScreen }
+                  favoriteSongs={ favoriteSongs }
+                  handleFavoriteSongs={ this.handleFavoriteSongs }
                 />))}
             </ul>
 
