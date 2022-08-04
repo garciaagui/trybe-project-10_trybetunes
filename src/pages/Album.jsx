@@ -41,6 +41,10 @@ class Album extends Component {
       });
   }
 
+  handleLoadingScreen = (bool) => {
+    this.setState({ loading: bool });
+  }
+
   render() {
     const { loading, musicList, artistName, albumName, coverImage } = this.state;
     return (
@@ -65,8 +69,11 @@ class Album extends Component {
               {musicList.filter((music) => music.previewUrl !== undefined)
                 .map((music) => (<MusicCard
                   key={ music.trackId }
+                  musicList={ musicList }
+                  trackId={ music.trackId }
                   trackName={ music.trackName }
                   previewUrl={ music.previewUrl }
+                  handleLoadingScreen={ this.handleLoadingScreen }
                 />))}
             </ul>
 
