@@ -55,31 +55,22 @@ class Album extends Component {
     });
   }
 
-  // handleFavoriteSongs = (song) => {
-  //   this.setState({ loading: true });
-  //   this.setState((prevState) => ({
-  //     favoriteSongs: [...prevState.favoriteSongs, song],
-  //   }), () => ({
-  //     loading: false,
-  //   }));
-  // }
-
-    handleFavoriteSongs = (song) => {
-      const { favoriteSongs } = this.state;
-      this.setState({ loading: true }, () => {
-        if (!favoriteSongs.find((music) => music.trackId === song.trackId)) {
-          this.setState((prevState) => ({
-            favoriteSongs: [...prevState.favoriteSongs, song],
-          }));
-        } else {
-          this.setState((prevState) => ({
-            favoriteSongs: prevState.favoriteSongs
-              .filter((music) => music.trackId !== song.trackId),
-          }));
-        }
-      });
-      this.setState({ loading: false });
-    }
+  handleFavoriteSongs = (song) => {
+    const { favoriteSongs } = this.state;
+    this.setState({ loading: true }, () => {
+      if (!favoriteSongs.find((music) => music.trackId === song.trackId)) {
+        this.setState((prevState) => ({
+          favoriteSongs: [...prevState.favoriteSongs, song],
+        }));
+      } else {
+        this.setState((prevState) => ({
+          favoriteSongs: prevState.favoriteSongs
+            .filter((music) => music.trackId !== song.trackId),
+        }));
+      }
+    });
+    this.setState({ loading: false });
+  }
 
   handleLoadingScreen = (bool) => {
     this.setState({ loading: bool });
