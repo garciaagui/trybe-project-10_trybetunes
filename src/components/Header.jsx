@@ -49,7 +49,7 @@ class Header extends Component {
         </nav>
 
         {loading ? <Loading /> : (
-          <span data-testid="header-user-name">{`Usuário: ${username}`}</span>
+          <span data-testid="header-user-name">{username}</span>
         ) }
 
       </header>
