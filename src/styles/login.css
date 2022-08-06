@@ -1,36 +1,42 @@
-.form-login {
+form {
   align-items: center;
   display: flex;
   flex-direction: column;
+  font-size: 20px;
   justify-content: center;
   margin: auto;
   width: 70%;
 }
 
-.form-login h2 {
-  font-size: 2em;
+form img {
+  margin-bottom: 50px;
 }
 
-.form-login input {
-  font-size: 18px;
-  height: 40px;
+form h2 {
+  color: rgb(68, 73, 85);
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+form label {
   margin-bottom: 50px;
+}
+
+.form-control {
+  font-size: 0.9em;
+  height: 50px;
   width: 400px;
 }
 
-.form-login span {
+span {
   color: rgb(146, 146, 146);
-  position: fixed;
-  top: 140px;
+  font-size: 0.7em;
+  position: absolute;
+  top: 300px;
 }
 
-.form-login button {
-  background-color: rgb(64, 223, 100);
-  cursor: pointer;
-  height: 30px;
-  width: 200px;
+.btn {
+  font-size: 1em;
+  width: 100px;
 }
 
-.form-login button:disabled {
-  background-color: rgb(240, 240, 240);
-}

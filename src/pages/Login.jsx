@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 import '../styles/login.css';
+import TrybeTunesLogo from '../images/trybe-tunes-logo.png';
 
 class Login extends Component {
   constructor() {
@@ -42,16 +43,18 @@ class Login extends Component {
       <div data-testid="page-login">
 
         {loading ? <Loading /> : (
-          <form className="form-login">
+          <form>
+            <img src={ TrybeTunesLogo } alt="trybetunes-logo" />
             <h2>Login</h2>
             <label htmlFor="username">
               <input
                 type="text"
-                name="username"
                 id="username"
+                name="username"
+                className="form-control"
+                placeholder="Insira o seu nome"
                 value={ username }
                 onChange={ this.handleLoginNameChange }
-                placeholder="Insira o seu nome"
                 data-testid="login-name-input"
               />
             </label>
@@ -62,6 +65,7 @@ class Login extends Component {
 
             <button
               type="button"
+              className="btn btn-primary"
               disabled={ isLoginBtnDisabled }
               onClick={ this.validateLogin }
               data-testid="login-submit-button"
