@@ -43,7 +43,7 @@ class Login extends Component {
       <div data-testid="page-login">
 
         {loading ? <Loading /> : (
-          <form>
+          <form className="form-login">
             <img src={ TrybeTunesLogo } alt="trybetunes-logo" />
             <h2>Login</h2>
             <label htmlFor="username">

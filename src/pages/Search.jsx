@@ -56,48 +56,64 @@ class Search extends Component {
 
         {loading ? <Loading /> : (
           <section>
+
             <form className="form-search">
-              <h2>Search</h2>
+              <h2>Pesquisa</h2>
+              <section className="container-input-btn">
+                <label htmlFor="artistName">
+                  <input
+                    type="text"
+                    name="artistName"
+                    id="artistName"
+                    className="form-control"
+                    autoComplete="off"
+                    placeholder="Insira o nome de uma banda ou artista"
+                    value={ artistName }
+                    onChange={ this.handleArtistNameChange }
+                    data-testid="search-artist-input"
+                  />
+                </label>
 
-              <label htmlFor="artistName">
-                <input
-                  type="text"
-                  name="artistName"
-                  id="artistName"
-                  value={ artistName }
-                  onChange={ this.handleArtistNameChange }
-                  placeholder="Insira o nome de uma banda ou artista"
-                  data-testid="search-artist-input"
-                />
-                {isSearchBtnDisabled
-                  ? (<span>O nome precisa ter no mínimo 2 caracteres</span>)
-                  : ''}
-              </label>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  disabled={ isSearchBtnDisabled }
+                  onClick={ this.handleGetAlbums }
+                  data-testid="search-artist-button"
+                >
+                  Pesquisar
+                </button>
+              </section>
 
-              <button
-                type="button"
-                disabled={ isSearchBtnDisabled }
-                onClick={ this.handleGetAlbums }
-                data-testid="search-artist-button"
-              >
-                Pesquisar
-              </button>
+              {isSearchBtnDisabled
+                ? (<span>O nome precisa ter no mínimo 2 caracteres</span>)
+                : ''}
             </form>
 
-            {!albums.length ? 'Nenhum álbum foi encontrado' : (
-              <section>
+            {!albums.length ? (
+              <section className="container-failed-search">
+                <span>Nenhum álbum foi encontrado</span>
+                <span>&#128531;</span>
+              </section>
+            ) : (
+              <section className="container-successful-search">
                 <span>
                   {`Resultado de álbuns de: ${backupArtistName}`}
                 </span>
-                <ul className="all-albums">
+
+                <ul className="container-all-albums">
                   {albums.map((e) => (
-                    <li className="individual-album" key={ e.collectionId }>
+                    <li key={ e.collectionId }>
                       <Link
-                        className="link"
+                        className="container-link"
                         data-testid={ `link-to-album-${e.collectionId}` }
                         to={ `/album/${e.collectionId}` }
                       >
-                        <img src={ e.artworkUrl100 } alt={ e.collectionName } />
+                        <img
+                          src={ e.artworkUrl100
+                            .replace(/100x100bb/g, '1000x1000bb') }
+                          alt={ e.collectionName }
+                        />
                         <span>{e.collectionName}</span>
                       </Link>
                     </li>

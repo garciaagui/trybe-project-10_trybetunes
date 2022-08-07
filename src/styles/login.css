@@ -1,4 +1,4 @@
-form {
+.form-login {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -8,34 +8,34 @@ form {
   width: 70%;
 }
 
-form img {
+.form-login img {
   margin-bottom: 50px;
 }
 
-form h2 {
+.form-login h2 {
   color: rgb(68, 73, 85);
   font-size: 1.2em;
   margin-bottom: 10px;
 }
 
-form label {
+.form-login label {
   margin-bottom: 50px;
 }
 
-.form-control {
+.form-login .form-control {
   font-size: 0.9em;
   height: 50px;
   width: 400px;
 }
 
-span {
+.form-login span {
   color: rgb(146, 146, 146);
   font-size: 0.7em;
   position: absolute;
   top: 300px;
 }
 
-.btn {
+.form-login .btn {
   font-size: 1em;
   width: 100px;
 }
