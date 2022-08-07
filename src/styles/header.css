@@ -5,10 +5,10 @@ header {
 }
 
 header section {
-  display: flex;
   align-items: center;
-  justify-content: center;
+  display: flex;
   height: 100%;
+  justify-content: center;
 }
 
 header section nav {
@@ -31,29 +31,29 @@ header section nav .link:hover {
 }
 
 .imgLogo {
-  position: absolute;
-  top:-13px;
   left: 10px;
+  position: absolute;
+  top: -13px;
 }
 
 .userField {
   background-color: white;
   border-radius: 100px;
+  box-shadow: rgba(0, 0, 0, 0.274) 0 5px 15px;
+  color: rgb(10, 48, 49);
   display: flex;
+  font-weight: 800;
   height: 40px;
-  width: 200px;
-  box-shadow: rgba(0, 0, 0, 0.274) 0px 5px 15px;
   position: absolute;
   right: 15px;
-  color: rgb(10, 48, 49);
-  font-weight: 800;
+  width: 200px;
 }
 
 .userField img {
-  width: 32px;
   background-color: rgb(59, 193, 139);
-  padding: 4px;
   border-radius: 50%;
+  padding: 4px;
   position: relative;
   right: 20px;
+  width: 32px;
 }

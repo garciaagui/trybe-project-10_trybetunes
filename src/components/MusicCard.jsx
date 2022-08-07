@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { addSong, removeSong } from '../services/favoriteSongsAPI';
+import '../styles/musiccard.css';
 
 class MusicCard extends Component {
   constructor() {
@@ -30,7 +31,7 @@ class MusicCard extends Component {
     const isFavorited = favoriteSongs.some((music) => music.trackId === trackId);
 
     return (
-      <li>
+      <li className="trackItem">
         <span>
           {trackName}
         </span>

@@ -1,0 +1,26 @@
+.container-album {
+  display: flex;
+  margin: 50px;
+}
+
+.container-album-info {
+  align-items: flex-start;
+  align-self: flex-start;
+  color: rgb(10, 48, 49);
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+  position: sticky;
+  top: 30px;
+  width: 300px;
+}
+
+.container-album-info img {
+  box-shadow: rgba(0, 0, 0, 0.274) 0 5px 15px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.container-album-info h3:last-child {
+  font-weight: 300;
+}

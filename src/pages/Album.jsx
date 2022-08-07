@@ -5,6 +5,7 @@ import Loading from '../components/Loading';
 import MusicCard from '../components/MusicCard';
 import getMusics from '../services/musicsAPI';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
+import '../styles/album.css';
 
 class Album extends Component {
   constructor() {
@@ -90,10 +91,14 @@ class Album extends Component {
         <Header />
 
         {loading ? <Loading /> : (
-          <section>
+          <section className="container-album">
 
-            <section>
-              <img src={ coverImage } alt={ albumName } />
+            <section className="container-album-info">
+              <img
+                src={ coverImage }
+                // src={ coverImage.replace(/100x100bb/g, '1000x1000bb') }
+                alt={ albumName }
+              />
               <h3 data-testid="artist-name">
                 {`Artist Name: ${artistName}`}
               </h3>

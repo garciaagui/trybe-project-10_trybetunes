@@ -1,0 +1,30 @@
+.trackItem {
+  align-items: center;
+  border-bottom: 1px solid rgb(214, 214, 214);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 20px;
+  list-style: none;
+  margin-bottom: 15px;
+  padding-bottom: 20px;
+}
+
+.trackItem span {
+  font-weight: 800;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.trackItem audio {
+  margin-right: 20px;
+  width: 400px;
+}
+
+.trackItem label {
+  align-items: center;
+  display: flex;
+  font-weight: 800;
+  justify-content: space-around;
+  width: 100px;
+}
+
