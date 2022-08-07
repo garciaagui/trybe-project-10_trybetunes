@@ -1,3 +1,59 @@
 header {
-  background-color: rgb(64, 223, 100);
+  background-color: rgb(10, 48, 49);
+  height: 100px;
+  margin-bottom: 50px;
+}
+
+header section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+header section nav {
+  display: flex;
+  font-size: 20px;
+  justify-content: space-evenly;
+  list-style: none;
+  width: 500px;
+}
+
+header section nav .link {
+  color: white;
+  font-weight: 800;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+header section nav .link:hover {
+  color: rgb(59, 193, 139);
+}
+
+.imgLogo {
+  position: absolute;
+  top:-13px;
+  left: 10px;
+}
+
+.userField {
+  background-color: white;
+  border-radius: 100px;
+  display: flex;
+  height: 40px;
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.274) 0px 5px 15px;
+  position: absolute;
+  right: 15px;
+  color: rgb(10, 48, 49);
+  font-weight: 800;
+}
+
+.userField img {
+  width: 32px;
+  background-color: rgb(59, 193, 139);
+  padding: 4px;
+  border-radius: 50%;
+  position: relative;
+  right: 20px;
 }

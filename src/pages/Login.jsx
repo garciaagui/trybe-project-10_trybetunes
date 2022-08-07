@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 import '../styles/login.css';
-import TrybeTunesLogo from '../images/trybe-tunes-logo.png';
+import TrybeTunesLogo from '../images/trybe-tunes_grey-logo.png';
 
 class Login extends Component {
   constructor() {
